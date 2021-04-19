@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="QuizeText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:color">@color/teal_700</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:paddingTop">15dp</item>
+    </style>
+    <style name="MultilineTextView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:maxLines">2</item>
+    </style>
+</resources>

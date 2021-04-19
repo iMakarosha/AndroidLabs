@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        tools:context=".MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:srcCompat="@drawable/pcb2" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextViewStyle"
+                android:text="Для регистрации заполните форму:" />
+
+            <LinearLayout
+                android:id="@+id/llEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tw1"
+                    style="@style/TextViewStyle"
+                    android:text="Эл.почта" />
+
+                <EditText
+                    android:id="@+id/etEmail"
+                    style="@style/EditTextStyle"
+                    android:hint="example@mail.ru"
+                    android:inputType="textEmailAddress" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tw2"
+                    style="@style/TextViewStyle"
+                    android:hint="******"
+                    android:text="Пароль"/>
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:inputType="textPassword"
+                    style="@style/EditTextStyle"
+                    tools:layout_editor_absoluteY="55dp" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnBaseSend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="checkBaseForm"
+                android:text="Следующий шаг" />
+
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:textColor="@color/black"
+                android:text="Уже есть аккаунт" />
+
+            <LinearLayout
+                android:id="@+id/llName"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tw3"
+                    style="@style/TextViewStyle"
+                    android:text="Ваше имя" />
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:inputType="textPersonName"
+                    style="@style/EditTextStyle"
+                    android:hint="Иван"
+                    tools:layout_editor_absoluteY="55dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSurname"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tw4"
+                    android:inputType="textPersonName"
+                    style="@style/TextViewStyle"
+                    android:text="Ваша фамилия"/>
+
+                <EditText
+                    android:id="@+id/etSurname"
+                    style="@style/EditTextStyle"
+                    android:hint="Иванов"
+                    tools:layout_editor_absoluteY="55dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llBirthday"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tw5"
+                    android:inputType="textPersonName"
+                    style="@style/TextViewStyle"
+                    android:text="День рождения"/>
+
+                <EditText
+                    android:id="@+id/etBirthday"
+                    style="@style/EditTextStyle"
+                    android:hint="01.01.1990"
+                    android:inputType="date"
+                    tools:layout_editor_absoluteY="55dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llCountry"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tw6"
+                    android:inputType="textPersonName"
+                    style="@style/TextViewStyle"
+                    android:text="Страна"/>
+
+                <AutoCompleteTextView
+                    android:id="@+id/etCountry"
+                    style="@style/EditTextStyle"
+                    android:hint="Россия"
+                    tools:layout_editor_absoluteY="55dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llCities"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tw7"
+                    android:inputType="textPersonName"
+                    style="@style/TextViewStyle"
+                    android:text="Город"/>
+
+                <AutoCompleteTextView
+                    android:id="@+id/etCity"
+                    style="@style/EditTextStyle"
+                    android:hint="Москва"
+                    tools:layout_editor_absoluteY="55dp" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:checked="true"
+                android:text="Получать рассылку новостей и акций" />
+
+            <Button
+                android:id="@+id/btnSend"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="checkForm"
+                android:text="Следующий шаг" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

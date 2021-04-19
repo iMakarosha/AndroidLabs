@@ -1,0 +1,7 @@
+include ':l5volunteering'
+include ':l4volunteering'
+include ':l3volunteering'
+include ':l2getcoupon'
+include ':l1calculator'
+include ':app'
+rootProject.name = "MyLabs"
