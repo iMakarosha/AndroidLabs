@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Спасибо за прохождение анкеты!"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView4"
@@ -116,10 +116,10 @@
         android:id="@+id/linearLayout2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_alignParentBottom="true">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/textView6"
