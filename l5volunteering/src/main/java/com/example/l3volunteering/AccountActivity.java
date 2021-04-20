@@ -12,6 +12,10 @@ import android.widget.TextView;
 public class AccountActivity extends AppCompatActivity implements TabsFragment.OnFragmentSendDataListener {
 
     String volunteerId;
+    FragmentTransaction fTrans;
+    MyinfoFragment frg1;
+    AboutFragment frg2;
+    NewsFragment frg3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +24,12 @@ public class AccountActivity extends AppCompatActivity implements TabsFragment.O
         Bundle arguments = getIntent().getExtras();
         volunteerId = (String) arguments.getString("volunteerId");
 
+        frg1 = new MyinfoFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("vouId", volunteerId);
+        frg1.setArguments(bundle);
+        frg2 = new AboutFragment();
+        frg3 = new NewsFragment();
     }
 
     @Override
@@ -30,20 +40,18 @@ public class AccountActivity extends AppCompatActivity implements TabsFragment.O
 
     @Override
     public void onSendData(String selectedItem) {
-        MyinfoFragment fragment = (MyinfoFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.frgMyinfo);
-        if (fragment != null){
-            switch (selectedItem){
-                case "О нас":
-                    fragment.setContentAbout();
-                    break;
-                case "Новости":
-                    fragment.setContentNews();
-                    break;
-                default:
-                    fragment.setContentMyInfo(volunteerId);
-                    break;
-            }
+        fTrans = getSupportFragmentManager().beginTransaction();
+        switch (selectedItem){
+            case "О нас":
+                fTrans.replace(R.id.frgMyinfo, frg2);
+                break;
+            case "Новости":
+                fTrans.replace(R.id.frgMyinfo, frg3);
+                break;
+            default:
+                fTrans.replace(R.id.frgMyinfo, frg1);
+                break;
         }
+        fTrans.commit();
     }
 }
