@@ -28,9 +28,9 @@
 
             <TextView
                 android:id="@+id/textView"
+                style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/TextViewStyle"
                 android:text="Для регистрации заполните форму:" />
 
             <LinearLayout
@@ -61,14 +61,15 @@
                     android:id="@+id/tw2"
                     style="@style/TextViewStyle"
                     android:hint="******"
-                    android:text="Пароль"/>
+                    android:text="Пароль" />
 
                 <EditText
                     android:id="@+id/etPassword"
-                    android:inputType="textPassword"
                     style="@style/EditTextStyle"
+                    android:inputType="textPassword"
                     tools:layout_editor_absoluteY="55dp" />
             </LinearLayout>
+
             <Button
                 android:id="@+id/btnBaseSend"
                 android:layout_width="match_parent"
@@ -82,15 +83,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#00FFFFFF"
-                android:textColor="@color/black"
-                android:text="Уже есть аккаунт" />
+                android:text="Уже есть аккаунт"
+                android:textColor="@color/black" />
 
             <LinearLayout
                 android:id="@+id/llName"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tw3"
@@ -99,24 +100,24 @@
 
                 <EditText
                     android:id="@+id/etName"
-                    android:inputType="textPersonName"
                     style="@style/EditTextStyle"
                     android:hint="Иван"
+                    android:inputType="textPersonName"
                     tools:layout_editor_absoluteY="55dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llSurname"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tw4"
-                    android:inputType="textPersonName"
                     style="@style/TextViewStyle"
-                    android:text="Ваша фамилия"/>
+                    android:inputType="textPersonName"
+                    android:text="Ваша фамилия" />
 
                 <EditText
                     android:id="@+id/etSurname"
@@ -127,16 +128,16 @@
 
             <LinearLayout
                 android:id="@+id/llBirthday"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tw5"
-                    android:inputType="textPersonName"
                     style="@style/TextViewStyle"
-                    android:text="День рождения"/>
+                    android:inputType="textPersonName"
+                    android:text="День рождения" />
 
                 <EditText
                     android:id="@+id/etBirthday"
@@ -148,16 +149,16 @@
 
             <LinearLayout
                 android:id="@+id/llCountry"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tw6"
-                    android:inputType="textPersonName"
                     style="@style/TextViewStyle"
-                    android:text="Страна"/>
+                    android:inputType="textPersonName"
+                    android:text="Страна" />
 
                 <AutoCompleteTextView
                     android:id="@+id/etCountry"
@@ -168,16 +169,16 @@
 
             <LinearLayout
                 android:id="@+id/llCities"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tw7"
-                    android:inputType="textPersonName"
                     style="@style/TextViewStyle"
-                    android:text="Город"/>
+                    android:inputType="textPersonName"
+                    android:text="Город" />
 
                 <AutoCompleteTextView
                     android:id="@+id/etCity"
@@ -188,19 +189,19 @@
 
             <CheckBox
                 android:id="@+id/checkBox"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:checked="true"
-                android:text="Получать рассылку новостей и акций" />
+                android:text="Получать рассылку новостей и акций"
+                android:visibility="gone"
+                tools:checked="true" />
 
             <Button
                 android:id="@+id/btnSend"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="checkForm"
-                android:text="Следующий шаг" />
+                android:text="Следующий шаг"
+                android:visibility="gone" />
 
         </LinearLayout>
 
