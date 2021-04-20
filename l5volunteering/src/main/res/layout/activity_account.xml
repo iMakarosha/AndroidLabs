@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="fill_parent"
     android:padding="30dp"
-    tools:context=".SuccessActivity">
+    tools:context=".AccountActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -31,6 +31,34 @@
             android:text="Общественная организация"
             android:paddingBottom="15dp"
             android:textSize="20sp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/tabsFragment"
+                android:name="com.example.l3volunteering.TabsFragment"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/frgMyinfo"
+                android:name="com.example.l3volunteering.MyinfoFragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tabsFragment"
+                app:layout_constraintVertical_bias="0.050000012" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/twHello"

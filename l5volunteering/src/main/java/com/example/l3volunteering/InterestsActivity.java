@@ -17,14 +17,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 public class InterestsActivity extends AppCompatActivity {
 
@@ -111,7 +107,7 @@ public class InterestsActivity extends AppCompatActivity {
                     }
 
                     //обработка активностей
-                    Intent intent = new Intent(this, SuccessActivity.class);
+                    Intent intent = new Intent(this, AccountActivity.class);
                     intent.putExtra("volunteerId", cursor.getString(cursor.getColumnIndex("rowid")));
                     //intent.putStringArrayListExtra("wantToDo", wantToDo);
 
