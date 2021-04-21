@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         originalDrawable = ((EditText) findViewById(R.id.etCountry)).getBackground();
 
-        //getApplicationContext().deleteDatabase("volunteering.db");
+        getApplicationContext().deleteDatabase("volunteering.db");
 
         rCities = addListItems(rCities, mRCities);
         uCities = addListItems(uCities, mUCities);

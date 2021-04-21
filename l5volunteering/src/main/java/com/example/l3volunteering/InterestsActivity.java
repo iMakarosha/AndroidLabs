@@ -80,7 +80,7 @@ public class InterestsActivity extends AppCompatActivity {
             for(int i = 1; i<wantToDoCount; i++){
                 if(((CheckBox)llWantToDo.getChildAt(i)).isChecked()) {
                     //wantToDo.add(((CheckBox) llWantToDo.getChildAt(i)).getText().toString());
-                    wantToDoInt.add(i-1);
+                    wantToDoInt.add(i);
                 }
             }
 
@@ -119,6 +119,7 @@ public class InterestsActivity extends AppCompatActivity {
                 toast.setGravity(Gravity.TOP, 30, 160);
                 toast.show();
             }
+            cursor.close();
         }
     }
 

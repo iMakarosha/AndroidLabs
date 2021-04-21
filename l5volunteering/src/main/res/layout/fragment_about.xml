@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -79,4 +80,5 @@
         android:text="Если Вы зарегистрировались как волонтер, Вы будете получать информацию о всех событиях на ваш email, где будут нуждаться в Вашей помощи. Если Вы оставили заявку на помощь, то получите уведомление, когда кто-нибудь откликнется на просьбу."
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
 </LinearLayout>

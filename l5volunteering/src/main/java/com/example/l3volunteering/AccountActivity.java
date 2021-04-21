@@ -25,9 +25,6 @@ public class AccountActivity extends AppCompatActivity implements TabsFragment.O
         volunteerId = (String) arguments.getString("volunteerId");
 
         frg1 = new MyinfoFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("vouId", volunteerId);
-        frg1.setArguments(bundle);
         frg2 = new AboutFragment();
         frg3 = new NewsFragment();
     }
@@ -49,6 +46,10 @@ public class AccountActivity extends AppCompatActivity implements TabsFragment.O
                 fTrans.replace(R.id.frgMyinfo, frg3);
                 break;
             default:
+                Bundle bundle = new Bundle();
+                bundle.putString("vouId", volunteerId);
+                frg1.setArguments(bundle);
+
                 fTrans.replace(R.id.frgMyinfo, frg1);
                 break;
         }

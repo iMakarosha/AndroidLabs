@@ -107,11 +107,6 @@
 
 
             <CheckBox
-                android:id="@+id/chb0"
-                style="@style/CheckBoxStyle"
-                android:text="Организация досуга детей" />
-
-            <CheckBox
                 android:id="@+id/chb1"
                 style="@style/CheckBoxStyle"
                 android:text="Оказание помощи пожилым людям и ветеранам" />
@@ -156,6 +151,11 @@
                 style="@style/CheckBoxStyle"
                 android:text="Работа в центрах и пунктах добровольчества" />
 
+            <CheckBox
+                android:id="@+id/chb10"
+                style="@style/CheckBoxStyle"
+                android:text="Организация досуга детей" />
+
 
         </LinearLayout>
 
@@ -173,7 +173,8 @@
             <EditText
                 android:id="@+id/etAbout"
                 style="@style/EditTextStyle"
-                android:hint="Ответственный, доброжелательный, активный" />
+                android:hint="Ответственный, доброжелательный, активный"
+                android:text="Ответственный"/>
         </LinearLayout>
 
         <LinearLayout
