@@ -1,11 +1,11 @@
 package com.example.l2getcoupon;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class CheckActivity extends AppCompatActivity {
 

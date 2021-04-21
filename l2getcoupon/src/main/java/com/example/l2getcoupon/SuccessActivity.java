@@ -1,8 +1,8 @@
 package com.example.l2getcoupon;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SuccessActivity extends AppCompatActivity {
 

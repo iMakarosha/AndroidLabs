@@ -1,7 +1,6 @@
 package com.example.l4volunteering;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Volunteer implements Serializable {
     private String email;
