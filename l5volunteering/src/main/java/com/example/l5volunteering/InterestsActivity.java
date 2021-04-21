@@ -1,4 +1,4 @@
-package com.example.l3volunteering;
+package com.example.l5volunteering;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -43,8 +43,7 @@ public class InterestsActivity extends AppCompatActivity {
 
         Bundle arguments = getIntent().getExtras();
         volunteer = (Volunteer) arguments.get(Volunteer.class.getSimpleName());
-        ((TextView) findViewById(R.id.textView8)).setText(volunteer.getName() + ", расскажите о своих интересах и целях. " +
-                "Изменить данные можно будет в личном кабинете.");
+        ((TextView) findViewById(R.id.textView8)).setText(String.format("%s, расскажите о своих интересах и целях. Изменить данные можно будет в личном кабинете.", volunteer.getName()));
 
         ((EditText) findViewById(R.id.etNickname)).setText(volunteer.getName());
 
