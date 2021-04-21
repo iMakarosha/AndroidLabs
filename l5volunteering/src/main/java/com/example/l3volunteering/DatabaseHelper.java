@@ -13,6 +13,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String TABLE3 = "wantToDo";
     static final String TABLE4 = "volunteers_wantToDo";
     static final String TABLE5 = "news";
+    static final String TABLE6 = "newsRating";
 
     public DatabaseHelper(Context context){
         super(context, DB_NAME, null, SCHEMA);
@@ -25,6 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE3+" (activity TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE4+" (volunteerId INT, activityId INT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE5+" (volunteerId INT, name TEXT, annotation TEXT, text TEXT, date TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE6+" (newsId INT, volunteerId INT, rate INT, date TEXT)");
 
         db.execSQL("INSERT INTO "+TABLE1+" (email, name, surname, nickname, password, city, country, birthday, about, activity) " +
                 "VALUES ('admin@admin.ru', 'Admin', 'Adminov', 'CoolAdmin482', '123', 'Москва', 'Россия', '01.01.1990', 'Самый лучший админ', 1);");
@@ -56,6 +58,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "'В Android имеется встроенная поддержка одной из распространенных систем управления базами данных - SQLite.', " +
                 "'В Android имеется встроенная поддержка одной из распространенных систем управления базами данных - SQLite. Для этого в пакете android.database.sqlite " +
                 "определен набор классов, которые позволяют работать с базами данных SQLite. И каждое приложение может создать свою базу данных.', '29.03.2020');");
+
+        db.execSQL("INSERT INTO "+TABLE6+" (newsId, volunteerId, rate, date) VALUES (1, 1, 1, '28.03.2020');");
+        db.execSQL("INSERT INTO "+TABLE6+" (newsId, volunteerId, rate, date) VALUES (2, 1, -1, '28.03.2020');");
+        db.execSQL("INSERT INTO "+TABLE6+" (newsId, volunteerId, rate, date) VALUES (3, 1, 1, '28.03.2020');");
     }
 
     @Override
@@ -65,6 +71,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+TABLE3);
         db.execSQL("DROP TABLE IF EXISTS "+TABLE4);
         db.execSQL("DROP TABLE IF EXISTS "+TABLE5);
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE6);
         onCreate(db);
     }
 }
