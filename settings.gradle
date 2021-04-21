@@ -1,3 +1,5 @@
+include ':l7weather'
+include ':l7socket'
 include ':l5volunteering'
 include ':l4volunteering'
 include ':l3volunteering'

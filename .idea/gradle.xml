@@ -17,6 +17,8 @@
             <option value="$PROJECT_DIR$/l3volunteering" />
             <option value="$PROJECT_DIR$/l4volunteering" />
             <option value="$PROJECT_DIR$/l5volunteering" />
+            <option value="$PROJECT_DIR$/l7socket" />
+            <option value="$PROJECT_DIR$/l7weather" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
