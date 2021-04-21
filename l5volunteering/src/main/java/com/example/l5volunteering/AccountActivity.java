@@ -1,14 +1,9 @@
-package com.example.l3volunteering;
+package com.example.l5volunteering;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
 public class AccountActivity extends AppCompatActivity implements TabsFragment.OnFragmentSendDataListener {
 

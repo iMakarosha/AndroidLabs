@@ -1,15 +1,12 @@
-package com.example.l3volunteering;
+package com.example.l5volunteering;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,9 +15,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.MultiAutoCompleteTextView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -208,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
             String pass = cursor.getString(cursor.getColumnIndex("password"));
             if(pass.equals(((EditText)findViewById(R.id.etPassword)).getText().toString())){
                 showToast("Все прекрасно!");
-                Intent intent = new Intent(this, SuccessActivity.class);
+                Intent intent = new Intent(this, AccountActivity.class);
                 intent.putExtra("volunteerId", cursor.getString(cursor.getColumnIndex("rowid")));
                 startActivity(intent);
             }

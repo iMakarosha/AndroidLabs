@@ -1,4 +1,4 @@
-package com.example.l3volunteering;
+package com.example.l5volunteering;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 public class MyinfoFragment extends Fragment {

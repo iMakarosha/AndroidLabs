@@ -1,4 +1,4 @@
-package com.example.l3volunteering;
+package com.example.l4volunteering;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
             String pass = cursor.getString(cursor.getColumnIndex("password"));
             if(pass.equals(((EditText)findViewById(R.id.etPassword)).getText().toString())){
                 showToast("Все прекрасно!");
-                Intent intent = new Intent(this, AccountActivity.class);
+                Intent intent = new Intent(this, SuccessActivity.class);
                 intent.putExtra("volunteerId", cursor.getString(cursor.getColumnIndex("rowid")));
                 startActivity(intent);
             }
