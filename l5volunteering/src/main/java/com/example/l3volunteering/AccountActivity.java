@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class AccountActivity extends AppCompatActivity implements TabsFragment.OnFragmentSendDataListener {

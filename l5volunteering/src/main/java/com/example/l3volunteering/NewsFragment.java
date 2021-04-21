@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -35,27 +36,41 @@ public class NewsFragment extends Fragment {
         cursor = db.rawQuery("SELECT news.name, annotation, text, date, nickname FROM news " +
                 "INNER JOIN volunteers on volunteers.rowid = news.volunteerId", null);
         LinearLayout llContent = getClearLayout();
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             addNewsToLayout(llContent,
-                cursor.getString(cursor.getColumnIndex("news.name")),
-                cursor.getString(cursor.getColumnIndex("annotation")),
-                cursor.getString(cursor.getColumnIndex("text")),
-                cursor.getString(cursor.getColumnIndex("date")),
-                cursor.getString(cursor.getColumnIndex("nickname")));
+                    cursor.getString(cursor.getColumnIndex("news.name")),
+                    cursor.getString(cursor.getColumnIndex("annotation")),
+                    cursor.getString(cursor.getColumnIndex("text")),
+                    cursor.getString(cursor.getColumnIndex("date")),
+                    cursor.getString(cursor.getColumnIndex("nickname")));
         }
         cursor.close();
+
+        Button btnAddNews = new Button(this.getActivity());
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        btnAddNews.setLayoutParams(params);
+        btnAddNews.setText("Добавить новость");
+        btnAddNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NewsDialogFragment dialog = new NewsDialogFragment();
+                dialog.show(getActivity().getSupportFragmentManager(), "custom");
+            }
+        });
+        llContent.addView(btnAddNews);
     }
 
-    private LinearLayout getClearLayout(){
-        LinearLayout llContent = (LinearLayout)getView().findViewById(R.id.llNews);
+    private LinearLayout getClearLayout() {
+        LinearLayout llContent = (LinearLayout) getView().findViewById(R.id.llNews);
         llContent.removeAllViews();
         return llContent;
     }
 
-    private void addNewsToLayout(LinearLayout layout, String newsName, String annotation, String text, String date, String nickname){
+    private void addNewsToLayout(LinearLayout layout, String newsName, String annotation, String text, String date, String nickname) {
         LinearLayout llNews = new LinearLayout(this.getActivity());
         llNews.setOrientation(LinearLayout.VERTICAL);
-        llNews.setPadding(0,0,0,20);
+        llNews.setPadding(0, 0, 0, 20);
         TextView twNews = new TextView(this.getActivity());
         twNews.setText(newsName);
         twNews.setTypeface(twNews.getTypeface(), Typeface.BOLD);
