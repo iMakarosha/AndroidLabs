@@ -11,6 +11,7 @@
         android:orientation="vertical"
         android:padding="30dp"
         tools:context=".InterestsActivity">
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
@@ -46,7 +47,7 @@
             <TextView
                 android:id="@+id/tw1"
                 style="@style/TextViewStyle"
-                android:text="Ваш никнейм"/>
+                android:text="Ваш никнейм" />
 
             <EditText
                 android:id="@+id/etNickname"
@@ -174,7 +175,7 @@
                 android:id="@+id/etAbout"
                 style="@style/EditTextStyle"
                 android:hint="Ответственный, доброжелательный, активный"
-                android:text="Ответственный"/>
+                android:text="Ответственный" />
         </LinearLayout>
 
         <LinearLayout

@@ -34,7 +34,7 @@ public class AccountActivity extends AppCompatActivity implements TabsFragment.O
     @Override
     public void onSendData(String selectedItem) {
         fTrans = getSupportFragmentManager().beginTransaction();
-        switch (selectedItem){
+        switch (selectedItem) {
             case "О нас":
                 fTrans.replace(R.id.frgMyinfo, frg2);
                 break;

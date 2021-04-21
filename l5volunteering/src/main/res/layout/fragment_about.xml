@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -17,8 +16,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Сервис взаимосвязи волонтеров и нуждающихся в помощи"
         android:gravity="center"
+        android:text="Сервис взаимосвязи волонтеров и нуждающихся в помощи"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <ImageView
@@ -34,11 +33,12 @@
         android:gravity="center"
         android:text="Станьте волонтером"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="После регистрации у вас появится возможность приступать к волонтерской деятельности!"
         android:gravity="center"
+        android:text="После регистрации у вас появится возможность приступать к волонтерской деятельности!"
         android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
     <ImageView
@@ -54,11 +54,12 @@
         android:gravity="center"
         android:text="Подайте заявку на помощь"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Если вы нуждаетесь в помощи, оставьте заявку, и кто-нибудь обязательно откликнется и поможет вам!"
         android:gravity="center"
+        android:text="Если вы нуждаетесь в помощи, оставьте заявку, и кто-нибудь обязательно откликнется и поможет вам!"
         android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
     <ImageView
@@ -74,11 +75,12 @@
         android:gravity="center"
         android:text="Получайте уведомления"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Если Вы зарегистрировались как волонтер, Вы будете получать информацию о всех событиях на ваш email, где будут нуждаться в Вашей помощи. Если Вы оставили заявку на помощь, то получите уведомление, когда кто-нибудь откликнется на просьбу."
         android:gravity="center"
+        android:text="Если Вы зарегистрировались как волонтер, Вы будете получать информацию о всех событиях на ваш email, где будут нуждаться в Вашей помощи. Если Вы оставили заявку на помощь, то получите уведомление, когда кто-нибудь откликнется на просьбу."
         android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
 </LinearLayout>

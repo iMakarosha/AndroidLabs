@@ -24,25 +24,25 @@ public class SuccessActivity extends AppCompatActivity {
         String volunteerId = (String) arguments.getString("volunteerId");
         String email = "";
         db = dbHelper.getReadableDatabase();
-        cursor = db.rawQuery("SELECT * FROM Volunteers WHERE rowid = "+volunteerId+";", null);
-        if(cursor.moveToFirst()) {
+        cursor = db.rawQuery("SELECT * FROM Volunteers WHERE rowid = " + volunteerId + ";", null);
+        if (cursor.moveToFirst()) {
             String name = cursor.getString(cursor.getColumnIndex("name"));
             String surname = cursor.getString(cursor.getColumnIndex("surname"));
             email = cursor.getString(cursor.getColumnIndex("email"));
 
-            ((TextView)findViewById(R.id.twHello)).setText(name + " " + surname +
+            ((TextView) findViewById(R.id.twHello)).setText(name + " " + surname +
                     ", добро пожаловать в личный кабинет волонтера. Здесь будет отображаться информация о вас, вашей активности" +
                     "и мероприятиях, в которых вы можете принять участие.");
         }
 
         String strWantToDo = "Вы указали, что хотите участвовать в следующей деятельности:\r\n";
-        cursor = db.rawQuery("SELECT * FROM volunteers_wantToDo INNER JOIN wantToDo on wantToDo.rowid = volunteers_wantToDo.activityId WHERE volunteerId = "+volunteerId+";", null);
+        cursor = db.rawQuery("SELECT * FROM volunteers_wantToDo INNER JOIN wantToDo on wantToDo.rowid = volunteers_wantToDo.activityId WHERE volunteerId = " + volunteerId + ";", null);
 
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             strWantToDo += "* " + cursor.getString(cursor.getColumnIndex("activity")) + "\r\n";
         }
         ((TextView) findViewById(R.id.twWantToDo)).setText(strWantToDo);
-        if(email!=null){
+        if (email != null) {
             ((TextView) findViewById(R.id.twMail)).setText("Вы подписались на информационную рассылку!");
         }
     }

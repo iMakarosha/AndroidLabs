@@ -9,15 +9,10 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
-public class TabsFragment extends Fragment implements View.OnClickListener{
+public class TabsFragment extends Fragment implements View.OnClickListener {
 
-    interface OnFragmentSendDataListener {
-        void onSendData(String data);
-    }
-
+    String[] menuItems = {"ЛК", "О нас", "Блог"};
     private OnFragmentSendDataListener fragmentSendDataListener;
-    String[] menuItems = { "ЛК", "О нас", "Блог"};
-
 
     @Override
     public void onAttach(Context context) {
@@ -44,9 +39,13 @@ public class TabsFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         // получаем выбранный элемент
-        String selectedItem = ((Button)v).getText().toString();
+        String selectedItem = ((Button) v).getText().toString();
         // Посылаем данные Activity
         fragmentSendDataListener.onSendData(selectedItem);
 
+    }
+
+    interface OnFragmentSendDataListener {
+        void onSendData(String data);
     }
 }

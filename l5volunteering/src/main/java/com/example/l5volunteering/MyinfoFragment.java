@@ -37,8 +37,8 @@ public class MyinfoFragment extends Fragment {
         String email = "";
         TextView twFragment;
         db = dbHelper.getReadableDatabase();
-        cursor = db.rawQuery("SELECT * FROM volunteers WHERE rowid = "+volunteerId+";", null);
-        if(cursor.moveToFirst()) {
+        cursor = db.rawQuery("SELECT * FROM volunteers WHERE rowid = " + volunteerId + ";", null);
+        if (cursor.moveToFirst()) {
             String name = cursor.getString(cursor.getColumnIndex("name"));
             String surname = cursor.getString(cursor.getColumnIndex("surname"));
             email = cursor.getString(cursor.getColumnIndex("email"));
@@ -49,26 +49,26 @@ public class MyinfoFragment extends Fragment {
         }
 
         String strWantToDo = "Вы указали, что хотите участвовать в следующей деятельности:\r\n";
-        cursor = db.rawQuery("SELECT * FROM volunteers_wantToDo INNER JOIN wantToDo on wantToDo.rowid = volunteers_wantToDo.activityId WHERE volunteerId = "+volunteerId+";", null);
+        cursor = db.rawQuery("SELECT * FROM volunteers_wantToDo INNER JOIN wantToDo on wantToDo.rowid = volunteers_wantToDo.activityId WHERE volunteerId = " + volunteerId + ";", null);
 
         //cursor.moveToFirst();
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             strWantToDo += "* " + cursor.getString(cursor.getColumnIndex("activity")) + "\r\n";
         }
         cursor.close();
         addTextViewToLayout(llContent, strWantToDo);
-        if(email!=null){
-            addTextViewToLayout(llContent,"Вы подписались на информационную рассылку!");
+        if (email != null) {
+            addTextViewToLayout(llContent, "Вы подписались на информационную рассылку!");
         }
     }
 
-    private LinearLayout getClearLayout(){
-        LinearLayout llContent = (LinearLayout)getView().findViewById(R.id.clContent);
+    private LinearLayout getClearLayout() {
+        LinearLayout llContent = (LinearLayout) getView().findViewById(R.id.clContent);
         llContent.removeAllViews();
         return llContent;
     }
 
-    private void addTextViewToLayout(LinearLayout layout, String twText){
+    private void addTextViewToLayout(LinearLayout layout, String twText) {
         TextView textView = new TextView(this.getActivity());
         textView.setText(twText);
         layout.addView(textView);
