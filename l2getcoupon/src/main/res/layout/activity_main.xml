@@ -155,8 +155,8 @@
                 android:id="@+id/checkBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:checked="true"
-                android:text="Получать рассылку новостей и акций" />
+                android:text="Получать рассылку новостей и акций"
+                tools:checked="true" />
 
             <Button
                 android:id="@+id/btnSend"

@@ -1,13 +1,13 @@
 package com.example.l1calculator;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,14 +23,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         twResult = (TextView) findViewById(R.id.twResult);
-        twOperation = (TextView)findViewById(R.id.twOperation);
+        twOperation = (TextView) findViewById(R.id.twOperation);
         etNumber = (EditText) findViewById(R.id.etNumber);
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putString("OPERATION", lastOperation);
-        if(operand!=null)
+        if (operand != null)
             outState.putDouble("OPERAND", operand);
         super.onSaveInstanceState(outState);
     }
@@ -44,32 +44,31 @@ public class MainActivity extends AppCompatActivity {
         twOperation.setText(lastOperation);
     }
 
-    public void onClearClick(View view){
+    public void onClearClick(View view) {
         etNumber.setText("");
         twResult.setText("0");
         operand = null;
         lastOperation = "=";
     }
 
-    public void onNumberClick(View view){
-        Button btn = (Button)view;
+    public void onNumberClick(View view) {
+        Button btn = (Button) view;
         etNumber.append(btn.getText());
-        if(lastOperation.equals("=") && operand!=null){
+        if (lastOperation.equals("=") && operand != null) {
             operand = null;
         }
     }
 
-    public void onOperationClick(View view){
-        Button btn = (Button)view;
+    public void onOperationClick(View view) {
+        Button btn = (Button) view;
         String op = btn.getText().toString();
         String number = etNumber.getText().toString();
 
-        if(number.length()>0){
+        if (number.length() > 0) {
             number = number.replace(",", ".");
-            try{
+            try {
                 performOperation(Double.valueOf(number), op);
-            }
-            catch (NumberFormatException ex){
+            } catch (NumberFormatException ex) {
                 etNumber.setText("");
             }
         }
@@ -77,34 +76,32 @@ public class MainActivity extends AppCompatActivity {
         twOperation.setText(lastOperation);
     }
 
-    private void performOperation(Double number, String operation){
-        if(operand == null){
+    private void performOperation(Double number, String operation) {
+        if (operand == null) {
             operand = number;
-        }
-        else{
-            if(lastOperation.equals("=")){
+        } else {
+            if (lastOperation.equals("=")) {
                 lastOperation = operation;
             }
-            switch (lastOperation){
+            switch (lastOperation) {
                 case "=":
                     operand = number;
                     break;
                 case "/":
-                    if(number == 0){
+                    if (number == 0) {
                         operand = 0.0;
-                    }
-                    else{
+                    } else {
                         operand /= number;
                     }
                     break;
                 case "*":
-                    operand*= number;
+                    operand *= number;
                     break;
                 case "+":
-                    operand+=number;
+                    operand += number;
                     break;
                 case "-":
-                    operand-=number;
+                    operand -= number;
                     break;
             }
         }
