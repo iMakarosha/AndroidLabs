@@ -61,6 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        if (getIntent().getBooleanExtra("LOGOUT", false))
+        {
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         originalDrawable = ((EditText) findViewById(R.id.etCountry)).getBackground();
@@ -119,7 +125,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        ((Button)findViewById(R.id.btnCloseDialog)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CloseDialogFragment dialog = new CloseDialogFragment();
+                dialog.show(getSupportFragmentManager(), "custom");
+            }
+        });
+
     }
+
 
     public void setNotValidBack(int elId) {
         ((EditText) findViewById(elId)).setBackgroundResource(R.drawable.border);

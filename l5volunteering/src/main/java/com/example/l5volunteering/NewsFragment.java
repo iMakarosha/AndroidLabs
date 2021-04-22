@@ -43,15 +43,15 @@ public class NewsFragment extends Fragment {
         dbHelper = new DatabaseHelper(getView().getContext());
         db = dbHelper.getReadableDatabase();
 
-        cursor = db.rawQuery("SELECT news.rowid, news.name, annotation, text, news.date, sum(rate) as commonRate, nickname " +
+        cursor = db.rawQuery("SELECT news.rowid as newsrowid, news.name as newsName, annotation, text, news.date, sum(rate) as commonRate, nickname " +
                 "FROM news INNER JOIN volunteers on volunteers.rowid = news.volunteerId " +
                 "LEFT JOIN newsRating on newsRating.newsId = news.rowid " +
                 "GROUP BY newsId ORDER BY commonRate DESC", null);
         LinearLayout llContent = getClearLayout();
         while (cursor.moveToNext()) {
             addNewsToLayout(llContent,
-                    cursor.getString(cursor.getColumnIndex("news.rowid")),
-                    cursor.getString(cursor.getColumnIndex("news.name")),
+                    cursor.getString(cursor.getColumnIndex("newsrowid")),
+                    cursor.getString(cursor.getColumnIndex("newsName")),
                     cursor.getString(cursor.getColumnIndex("annotation")),
                     cursor.getString(cursor.getColumnIndex("text")),
                     cursor.getString(cursor.getColumnIndex("date")),
@@ -86,59 +86,60 @@ public class NewsFragment extends Fragment {
         llNews.setOrientation(LinearLayout.VERTICAL);
         llNews.setPadding(0, 0, 0, 20);
 
-            ConstraintLayout clHeader = new ConstraintLayout(this.getActivity());
-            clHeader.setBackgroundColor(Color.GREEN);
-            ConstraintSet constraintSet = new ConstraintSet();
-            LinearLayout.LayoutParams params;
+        ConstraintLayout clHeader = new ConstraintLayout(this.getActivity());
+        clHeader.setBackgroundColor(Color.GREEN);
+        ConstraintSet constraintSet = new ConstraintSet();
+        LinearLayout.LayoutParams params;
 
-            Button btnRateNews = new Button(this.getActivity());
-            btnRateNews.setId(ViewCompat.generateViewId());
-            int asdf = btnRateNews.getId();
-            btnRateNews.setText("♥");
-            btnRateNews.getBackground().setColorFilter(ContextCompat.getColor(this.getActivity(), android.R.color.white), PorterDuff.Mode.MULTIPLY);
+        Button btnRateNews = new Button(this.getActivity());
+        btnRateNews.setId(ViewCompat.generateViewId());
+        btnRateNews.setText("<3");
+        //btnRateNews.getBackground().setColorFilter(ContextCompat.getColor(this.getActivity(), android.R.color.white), PorterDuff.Mode.MULTIPLY);
 
-            constraintSet.clone(clHeader);
-            constraintSet.connect(btnRateNews.getId(),ConstraintSet.TOP, clHeader.getId(),ConstraintSet.TOP,0);
-            constraintSet.connect(btnRateNews.getId(),ConstraintSet.END, clHeader.getId(),ConstraintSet.END,0);
-            constraintSet.applyTo(clHeader);
+        constraintSet.clone(clHeader);
+        constraintSet.connect(btnRateNews.getId(), ConstraintSet.TOP, clHeader.getId(), ConstraintSet.TOP, 0);
+        constraintSet.connect(btnRateNews.getId(), ConstraintSet.RIGHT, clHeader.getId(), ConstraintSet.RIGHT, 0);
+        constraintSet.applyTo(clHeader);
 
-            params = new LinearLayout.LayoutParams(50, 50);
-            btnRateNews.setLayoutParams(params);
-            clHeader.addView(btnRateNews);
+        params = new LinearLayout.LayoutParams(50, 50);
+        btnRateNews.setLayoutParams(params);
+        clHeader.addView(btnRateNews);
 
 
-            TextView twRate = new TextView(this.getActivity());
+        TextView twRate = new TextView(this.getActivity());
         twRate.setId(ViewCompat.generateViewId());
         int assss = twRate.getId();
         twRate.setText((commonRate != null ? commonRate : 0).toString());
         twRate.setTextSize(24);
         twRate.setPadding(6, 10, 0, 0);
 
-            constraintSet.connect(twRate.getId(),ConstraintSet.TOP, clHeader.getId(),ConstraintSet.TOP,0);
-            constraintSet.connect(twRate.getId(),ConstraintSet.END, btnRateNews.getId(),ConstraintSet.START,0);
-            constraintSet.applyTo(clHeader);
+        constraintSet.clone(clHeader);
+        constraintSet.connect(twRate.getId(), ConstraintSet.TOP, clHeader.getId(), ConstraintSet.TOP, 0);
+        constraintSet.connect(twRate.getId(), ConstraintSet.END, btnRateNews.getId(), ConstraintSet.START, 0);
+        constraintSet.applyTo(clHeader);
 
-            params = new LinearLayout.LayoutParams(60, 40);
+        params = new LinearLayout.LayoutParams(60, 40);
         twRate.setLayoutParams(params);
-            clHeader.addView(twRate);
-
+        clHeader.addView(twRate);
 
 
         TextView twNews = new TextView(this.getActivity());
-            twNews.setText(newsName);
-            twNews.setTypeface(twNews.getTypeface(), Typeface.BOLD);
-            twNews.setTextSize(16);
-            twNews.setBackgroundColor(Color.BLUE);
+        twNews.setText(newsName);
+        twNews.setTypeface(twNews.getTypeface(), Typeface.BOLD);
+        twNews.setTextSize(16);
+        twNews.setBackgroundColor(Color.BLUE);
 
-            constraintSet.connect(twNews.getId(),ConstraintSet.START, clHeader.getId(),ConstraintSet.START,0);
-            constraintSet.connect(twNews.getId(),ConstraintSet.TOP, clHeader.getId(),ConstraintSet.TOP,0);
-            constraintSet.connect(twNews.getId(),ConstraintSet.END, twRate.getId(),ConstraintSet.START,0);
-            constraintSet.applyTo(clHeader);
+        constraintSet.clone(clHeader);
+        constraintSet.connect(twNews.getId(), ConstraintSet.START, clHeader.getId(), ConstraintSet.START, 0);
+        constraintSet.connect(twNews.getId(), ConstraintSet.TOP, clHeader.getId(), ConstraintSet.TOP, 0);
+        constraintSet.connect(twNews.getId(), ConstraintSet.END, twRate.getId(), ConstraintSet.START, 0);
+        constraintSet.applyTo(clHeader);
 
-            params = new LinearLayout.LayoutParams(0,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-            twNews.setLayoutParams(params);
-            clHeader.addView(twNews);
+
+        params = new LinearLayout.LayoutParams(0,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        twNews.setLayoutParams(params);
+        clHeader.addView(twNews);
 
 
         llNews.addView(clHeader);
