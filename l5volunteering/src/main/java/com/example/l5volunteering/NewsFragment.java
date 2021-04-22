@@ -51,7 +51,7 @@ public class NewsFragment extends Fragment {
         cursor = db.rawQuery("SELECT news.rowid as newsrowid, news.name as newsName, annotation, text, news.date, sum(rate) as commonRate, nickname " +
                 "FROM news INNER JOIN volunteers on volunteers.rowid = news.volunteerId " +
                 "LEFT JOIN newsRating on newsRating.newsId = news.rowid " +
-                "GROUP BY newsId ORDER BY commonRate DESC", null);
+                "GROUP BY newsId ORDER BY news.date DESC", null);
         LinearLayout llContent = getClearLayout();
         while (cursor.moveToNext()) {
             addNewsToLayout(llContent,
@@ -91,11 +91,12 @@ public class NewsFragment extends Fragment {
         llNews.setOrientation(LinearLayout.VERTICAL);
         llNews.setPadding(0, 0, 0, 20);
 
-        ConstraintLayout clHeader = new ConstraintLayout(this.getActivity());
+        LinearLayout clHeader = new LinearLayout(this.getActivity());
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         clHeader.setLayoutParams(params);
+        clHeader.setOrientation(LinearLayout.HORIZONTAL);
         clHeader.setId(ViewCompat.generateViewId());
-        ConstraintSet constraintSet = new ConstraintSet();
+//        ConstraintSet constraintSet = new ConstraintSet();
 
         TextView twNews = new TextView(this.getActivity());
         TextView twHidden = new TextView(this.getActivity());
@@ -107,11 +108,11 @@ public class NewsFragment extends Fragment {
         twHidden.setVisibility(View.GONE);
         twNews.setText(newsName);
         twNews.setTypeface(twNews.getTypeface(), Typeface.BOLD);
-        twNews.setTextSize(16);
+        twNews.setTextSize(15);
 
         twRate.setText((commonRate != null ? commonRate : 0).toString());
-        twRate.setTextSize(24);
-        twRate.setPadding(6, 10, 0, 0);
+        twRate.setTextSize(20);
+        twRate.setPadding(convertToPx(10), convertToPx(6), convertToPx(0), convertToPx(0));
         twRate.setId(ViewCompat.generateViewId());
 
         btnRateNews.setId(ViewCompat.generateViewId());
@@ -121,42 +122,40 @@ public class NewsFragment extends Fragment {
             public void onClick(View v) {
                 NewsDialogFragment dialog = new NewsDialogFragment();
                 Bundle args = new Bundle();
-                TextView hiddenTw = (TextView) ((ConstraintLayout) v.getParent()).findViewWithTag("newsId");
+                TextView hiddenTw = (TextView) ((LinearLayout) v.getParent()).findViewWithTag("newsId");
                 args.putString("newsId", hiddenTw.getText().toString());
                 dialog.setArguments(args);
                 dialog.show(getActivity().getSupportFragmentManager(), "custom");
             }
         });
 
-
-        constraintSet.clone(clHeader);
-        constraintSet.connect(twNews.getId(), ConstraintSet.START, clHeader.getId(), ConstraintSet.START, 0);
-        constraintSet.connect(twNews.getId(), ConstraintSet.TOP, clHeader.getId(), ConstraintSet.TOP, 0);
-        constraintSet.connect(twNews.getId(), ConstraintSet.END, twRate.getId(), ConstraintSet.START, 0);
-        constraintSet.applyTo(clHeader);
-
-
-        constraintSet.clone(clHeader);
-        constraintSet.connect(twRate.getId(), ConstraintSet.TOP, clHeader.getId(), ConstraintSet.TOP, 0);
-        constraintSet.connect(twRate.getId(), ConstraintSet.END, btnRateNews.getId(), ConstraintSet.START, 0);
-        constraintSet.applyTo(clHeader);
-
-        //btnRateNews.getBackground().setColorFilter(ContextCompat.getColor(this.getActivity(), android.R.color.white), PorterDuff.Mode.MULTIPLY);
-
-        constraintSet.clone(clHeader);
-        constraintSet.connect(btnRateNews.getId(), ConstraintSet.TOP, clHeader.getId(), ConstraintSet.TOP, 0);
-        constraintSet.connect(btnRateNews.getId(), ConstraintSet.RIGHT, clHeader.getId(), ConstraintSet.RIGHT, 0);
-        constraintSet.applyTo(clHeader);
+//
+//        constraintSet.clone(clHeader);
+//        constraintSet.connect(twNews.getId(), ConstraintSet.START, clHeader.getId(), ConstraintSet.START, 0);
+//        constraintSet.connect(twNews.getId(), ConstraintSet.TOP, clHeader.getId(), ConstraintSet.TOP, 0);
+//        constraintSet.connect(twNews.getId(), ConstraintSet.END, twRate.getId(), ConstraintSet.START, 0);
+//        constraintSet.applyTo(clHeader);
+//
+//        constraintSet.clone(clHeader);
+//        constraintSet.connect(twRate.getId(), ConstraintSet.TOP, clHeader.getId(), ConstraintSet.TOP, 0);
+//        constraintSet.connect(twRate.getId(), ConstraintSet.END, btnRateNews.getId(), ConstraintSet.START, 0);
+//        constraintSet.applyTo(clHeader);
+//
+//        constraintSet.clone(clHeader);
+//        constraintSet.connect(btnRateNews.getId(), ConstraintSet.TOP, clHeader.getId(), ConstraintSet.TOP, 0);
+//        constraintSet.connect(btnRateNews.getId(), ConstraintSet.RIGHT, clHeader.getId(), ConstraintSet.RIGHT, 0);
+//        constraintSet.applyTo(clHeader);
 
         clHeader.addView(twHidden);
 
-        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        params3.weight = 4;
         twNews.setLayoutParams(params3);
         clHeader.addView(twNews);
 
 
-        LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(convertToPx(60), convertToPx(40));
+        LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(convertToPx(40), convertToPx(40));
         twRate.setLayoutParams(params2);
         clHeader.addView(twRate);
 
@@ -195,11 +194,4 @@ public class NewsFragment extends Fragment {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, valueInDp, getResources().getDisplayMetrics());
     }
 
-    private void addRate(int rate, String newsId) {
-        dbHelper = new DatabaseHelper(getView().getContext());
-        db = dbHelper.getReadableDatabase();
-
-        db.execSQL("INSERT INTO newsRating (newsId, volunteerId, rate, date) VALUES (" + newsId + ", 1, " + rate + ", '" + (new SimpleDateFormat("dd.MM.yyyy")).format(new Date()) + "');");
-        cursor.close();
-    }
 }

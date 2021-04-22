@@ -17,27 +17,17 @@ public class NewsDialogFragment extends DialogFragment {
         String newsId = getArguments().getString("newsId");
         return builder.setTitle("Оценить новость")
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setMessage("Как вы хотите оценить новость?" + newsId)
+                .setMessage("Как вы хотите оценить новость?")
                 .setPositiveButton("+1", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getActivity(), AccountActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//?
-                        intent.putExtra("", true);
-                        intent.putExtra("newsId", newsId);
-                        intent.putExtra("rating", 1);
-                        startActivity(intent);
+                        ((AccountActivity)getActivity()).addRate(1, newsId);
                     }
                 })
                 .setNegativeButton("-1", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getActivity(), AccountActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//?
-                        intent.putExtra("addNews", true);
-                        intent.putExtra("newsId", newsId);
-                        intent.putExtra("rating", -1);
-                        startActivity(intent);
+                        ((AccountActivity)getActivity()).addRate(-1, newsId);
                     }
                 })
                 .create();
