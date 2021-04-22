@@ -3,6 +3,7 @@ package com.example.l7weather;
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             else {
                 // Если ввели, то формируем ссылку для получения погоды
                 String city = user_field.getText().toString();
-                String key = "2bcd10ab8e5a439e1795b6efc1606009";
+                String key = "6957edae7f710b589d6989f28e7ea5ae";
                 String url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + key + "&units=metric&lang=ru";
 
                 // Запускаем класс для получения погоды
@@ -115,13 +116,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-
             // Конвертируем JSON формат и выводим данные в текстовом поле
             try {
                 JSONObject jsonObject = new JSONObject(result);
                 result_info.setText("Температура: " + jsonObject.getJSONObject("main").getDouble("temp"));
             } catch (JSONException e) {
                 e.printStackTrace();
+            } catch (NullPointerException e) {
+                e.getMessage();
             }
         }
 
