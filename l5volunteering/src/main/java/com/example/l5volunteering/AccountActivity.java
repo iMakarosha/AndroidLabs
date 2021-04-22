@@ -33,6 +33,11 @@ public class AccountActivity extends AppCompatActivity implements TabsFragment.O
                 dialog.show(getSupportFragmentManager(), "custom");
             }
         });
+
+        if (getIntent().getBooleanExtra("addNews", false))
+        {
+            onSendData("Новости");
+        }
     }
 
     @Override
@@ -61,4 +66,5 @@ public class AccountActivity extends AppCompatActivity implements TabsFragment.O
         }
         fTrans.commit();
     }
+
 }
